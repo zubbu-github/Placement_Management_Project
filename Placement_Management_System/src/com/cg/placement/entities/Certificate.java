@@ -5,21 +5,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "certificate1")
+@Table(name = "certificate")
 public class Certificate {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JoinColumn(name = "certificate_id")
 	private int id;
 	private int year;
-	private String college;
 	
-	@OneToOne(mappedBy = "certificate")
+	@ManyToOne                         //association with College M:1
+	@JoinColumn(name = "college_id")
+	private College college;
+	
+	@OneToOne(mappedBy = "certificate")    //association with Student 1:1
 	private Student student;
 
 	public int getId() {
@@ -38,11 +41,11 @@ public class Certificate {
 		this.year = year;
 	}
 
-	public String getCollege() {
+	public College getCollege() {
 		return college;
 	}
 
-	public void setCollege(String college) {
+	public void setCollege(College college) {
 		this.college = college;
 	}
 

@@ -6,28 +6,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "student1")
+@Table(name = "student")
 public class Student {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private String college;
 	private int roll;
 	private String qualification;
 	private String course;
 	private int year;
+	private int hallTicketNo;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne                        //association with College M:1
+	@JoinColumn(name = "college_id")
+	private College college;
+	
+    @OneToOne(cascade = CascadeType.ALL)  //association with Certificate 1:1
 	@JoinColumn(name = "certificate_id")
 	private Certificate certificate;
-
-	private int hallTicketNo;
 
 	public int getId() {
 		return id;
@@ -45,11 +47,11 @@ public class Student {
 		this.name = name;
 	}
 
-	public String getCollege() {
+	public College getCollege() {
 		return college;
 	}
 
-	public void setCollege(String college) {
+	public void setCollege(College college) {
 		this.college = college;
 	}
 

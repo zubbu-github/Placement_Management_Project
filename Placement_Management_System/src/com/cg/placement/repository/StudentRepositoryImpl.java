@@ -12,7 +12,7 @@ public class StudentRepositoryImpl implements IStudentRepository {
 		entityManager = JPAUtil.getEntityManager();
 	  }
 	
-	//Create Operation - Repository
+	//Create Operation - Student Repository
 	@Override
 	public Student addStudent(Student student) {
 		entityManager.persist(student);

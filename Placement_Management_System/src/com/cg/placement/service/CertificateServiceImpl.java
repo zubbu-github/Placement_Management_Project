@@ -6,12 +6,13 @@ import com.cg.placement.repository.ICertificateRepository;
 
 public class CertificateServiceImpl implements ICertificateService{
 
-	
+	// Step 2: Establishing connection between Service and Repository
 	private ICertificateRepository dao;
 	public CertificateServiceImpl() {
 		dao = new CertificateRepositoryImpl();
 	}
 	
+	// Step 3: Service calls to perform CRUD Operation
 	@Override
 	public Certificate addCertificate(Certificate certificate) {
 		dao.beginTransaction();

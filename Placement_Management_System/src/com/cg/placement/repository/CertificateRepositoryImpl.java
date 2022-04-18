@@ -13,7 +13,7 @@ public class CertificateRepositoryImpl implements ICertificateRepository {
 		   entityManager = JPAUtil.getEntityManager();
 	    }	
 
-	// Create Operation Certificate Repository
+	// Create Operation - Certificate Repository
 	@Override
 	public Certificate addCertificate(Certificate certificate) {
 		entityManager.persist(certificate);
